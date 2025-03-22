@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <h1>Circle Calculator</h1>
+
+    <form method="post" action="{{ url_for('circle') }}">
+        <input type="text" name="radius" placeholder="Enter the radius" required />
+        <button type="submit">Calculate Perimeter</button>
+    </form>
+
+    <br>
+
+    {% if printed_result %}
+        <p><strong>Perimeter:</strong> {{ printed_result }}</p>
+    {% endif %}
+
+    <a href="{{ url_for('home') }}">Back to Home</a>
+{% endblock %}

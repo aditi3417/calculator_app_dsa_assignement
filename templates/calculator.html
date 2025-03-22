@@ -1,9 +1,10 @@
 {% extends 'layout.html' %}
 {% block content %}
-	<h1>Calculator</h1>
-    <form method="post">
-        <input type="text" name="value1" placeholder="Enter the first number" required="required" />
-        <input type="text" name="value2" placeholder="Enter the second number" required="required" />
+    <h1>Calculator</h1>
+
+    <form method="post" action="{{ url_for('calculate') }}">
+        <input type="text" name="value1" placeholder="Enter the first number" required />
+        <input type="text" name="value2" placeholder="Enter the second number" required />
 
         <label for="operation">Operation</label>
         <select id="operation" name="operation">
@@ -16,8 +17,9 @@
         <button type="submit">Calculate</button>
     </form>
 
-   <br>
+    <br>
 
-   {{ printed_result }}
-
+    {% if printed_result %}
+        <p><strong>Result:</strong> {{ printed_result }}</p>
+    {% endif %}
 {% endblock %}
